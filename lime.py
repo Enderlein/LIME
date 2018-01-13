@@ -1,10 +1,18 @@
+#!/usr/bin/env python
+"""
+A script for automatically filling in the metadata of .mp3 files
+(Fills in artist, song name, album name, and track number)
+"""
+
 import os
-import eyed3
-import spotipy
-import magic
 import tkinter as tk
 import tkinter.ttk as ttk
 import tkinter.filedialog as fdia
+
+import eyed3
+import spotipy
+import magic
+
 from spotipy.oauth2 import SpotifyClientCredentials
 
 client_id = "192011af64c44680b2474a73ce3cd9fb"
@@ -152,16 +160,23 @@ class MainWindow(ttk.Frame):
         
         # checks if the song even has tags
         # if not, makes all tags empty strings, as opposed to NoneType
-        if song.tag is not None:
+       
+        song_artist = ""
+        song_title = ""
+        song_album = ""
+        song_tracknum = ""    
+        
+        if song.tag.artist is not None:
             song_artist = song.tag.artist
+            
+        if song.tag.title is not None:
             song_title = song.tag.title
-            song_album = song.tag.album    
+        
+        if song.tag.album is not None:
+            song_album = song.tag.album
+        
+        if song.tag.track_num[0] is not None:
             song_tracknum = song.tag.track_num[0]
-        else:
-            song_artist = ""
-            song_title = ""
-            song_album = ""
-            song_tracknum = ""
         
         # bases the query on whether you have certain parameters
         # or not
@@ -222,9 +237,4 @@ class MainWindow(ttk.Frame):
                 song.tag.save()
                 print("CHANGED metadata for:", itempath)
                 
-root = tk.Tk()
-root.title("Tagger")
-app = MainWindow(parent=root)
-app.mainloop()
-                
-        
+
