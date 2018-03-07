@@ -7,8 +7,8 @@ import tkinter.ttk as ttk
 import tkinter.filedialog as fdia
 from spotipy.oauth2 import SpotifyClientCredentials
 
-client_id = "192011af64c44680b2474a73ce3cd9fb"
-client_secret = "a53d90d8d1a34181be42d5a8ed8b42ae"
+client_id = "[REDACTED]"
+client_secret = "[REDACTED]"
 
 client_credentials_manager = SpotifyClientCredentials(client_id = client_id, client_secret = client_secret)
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
