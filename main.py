@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+
 """
 A script for automatically filling in the metadata of .mp3 files
 (Fills in artist, song name, album name, and track number)
@@ -8,6 +9,14 @@ from lime import *
 
 root = tk.Tk()
 root.title("LIME 0.1")
+
+#root.columnconfigure(0, weight=1)
+#root.columnconfigure(1, weight=1)
+#root.columnconfigure(2, weight=1)
+#root.rowconfigure(0, weight=1)
+#root.rowconfigure(1, weight=1)
+#root.rowconfigure(2, weight=1)
+
 app = MainWindow(parent=root)
 app.mainloop()
                 
